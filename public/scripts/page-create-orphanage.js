@@ -30,3 +30,37 @@ map.on('click', (event) => {
 })
 
 
+/**Add field of photos*/
+function addPhotoField() {
+  /**Pegar o container de fotos id="images"  linha 85-create orphanage */
+  const container = document.querySelector('#images')
+  //Pegar o container para duplicar  .new-image
+  const fieldsContainer = document.querySelectorAll('.new-upload')
+  //realizar o clone da última imagem adicinada
+  const newFieldContainer = fieldsContainer[fieldsContainer.length - 1].cloneNode(true)
+  //verificar se o campo está vazio. Se sim, não adicionar ao container de imagens
+  const input = newFieldContainer.children[0]
+  
+  if (input.value == "") {
+    return
+  }
+  //limpar o campo antes de adicionar ao container de imagens
+  input.value = ""
+  //adicionar o clone ao container de #images
+  container.appendChild(newFieldContainer)
+}
+
+function deleteField(event) {
+  const span = event.currentTarget
+
+  const fieldsContainer = document.querySelectorAll('.new-upload')
+
+  if (fieldsContainer.length <= 1){
+    //limpar o valor do campo
+    span.parentNode.children[0].value = ""
+    return
+  }
+
+  //deletar o campo
+  span.parentNode.remove()
+}
