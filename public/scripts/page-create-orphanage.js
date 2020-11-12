@@ -77,5 +77,18 @@ function toggleSelect(event) {
   const input = document.querySelector('[name="open_on_weekends"]')
   
   input.value = button.dataset.value
+}
 
+function validate(event) {
+  
+  //validar se lat e lng estão preenchidos
+  //pegar o campo com document.querySelector
+  //verificar se no value está vazio
+  //se o value estiver vazio, realiza o event.preventDefault()
+  const needsLatAndLng = true; //quando a pessoa selecionar no mapa, essa variável fica como False e não entra mais no if
+  if (needsLatAndLng) {
+    event.preventDefault()
+    alert('Selecione a localização no mapa!')
+  }
+   
 }
